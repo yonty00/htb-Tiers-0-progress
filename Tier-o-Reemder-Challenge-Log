@@ -1,0 +1,43 @@
+#Reedemer
+*Date Completed: 2025-08-22*
+
+## Overview
+- **Category:** Parrot Linux, Redis, Redis-CLI, Enumaratino, Exploitation
+- **Tier:** 0
+
+## Tools Used
+- Ping IP
+- Nmap (sudo privilege) w/ flag -sV = Service/Version
+- Reedis Database
+
+## What I Did / Approach
+1. **Enumeration:**  
+   - Ping Target IP to detect connection to target
+   - Used nmap for port scanning with sudo privileges, detect open ports and find if the target is a server, and what type of server. 
+     In this case, target is a Reedis database server.   
+	   Sudo nmap -sV [target ip]
+
+     - Detected port 6379/tcp running Reedis
+
+2. **Exploitation:**  
+   - Discovered that Redis protocol runs on port 6379/tcp
+   - Attempted to login using Redis-cli -hostname Target IP
+   - Access Reedis server and discovered db and keys using info command.
+   - Access Access keys in order to retain the flag. use "get command" to show keys info. 
+3. **Privilege Escalation:**  
+   - No priviledge escalation was needed for this lab.
+   - No Admin account or password require to loing. Serveris currently open, therefore access is granted by using the redis-cli command with -hostname flag.
+4. ## What I Learned
+   - Redis is a memory database that is typically used to cache data that is frequently requested for a quick retrieval. Data gets managed by the RAM. However, the retrieval
+     time is very small. 
+   - Database in Redis starts from "0", as "0" is considered "1 Database". 
+
+## Challenges & Solutions
+- **Challenge:** Initially ran nmap for port scanning, then after knowing the open port for Redis, I proceeded to access the target machine with Redis-cli tools 
+            
+- **Solution:** Using the Redis-cli tools I was able to find the db and keys where the flag was being contained. 
+
+## References
+- [HTB Legal Rules]( https://resources.hackthebox.com/hubfs/Legal/AUP.pdf )
+- SMB client https://en.wikipedia.org/wiki/Server_Message_Block
+*No spoilers—just my process and key takeaways.*
