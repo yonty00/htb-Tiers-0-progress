@@ -14,7 +14,7 @@
 ## What I Did / Approach
 1. **Enumeration:**  
    - Ping Target's IP to detect connection to target
-   - Used nmap for port scanning with sudo privileges and detect open ports. 
+   - Used nmap for port scanning with sudo privileges, -sV flag and detect open ports. 
      In this case, the target is running a HTTP service on port 80/tcp
    - Install Golang and Gobuster
 
