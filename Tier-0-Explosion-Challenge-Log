@@ -1,0 +1,45 @@
+#Explosion
+*Date Completed: 2025-08-28*
+
+## Overview
+- **Category:** Parrot Linux, RDP, xfreerdp, Enumeration, Exploitation & Flag
+- **Tier:** 0
+
+## Tools Used
+- Ping IP
+- Nmap (sudo privilege) w/ flag -sV = Service/Version
+- Xfreerdp
+
+## What I Did / Approach
+1. **Enumeration:**  
+   - Ping Target's IP to detect connection to target
+   - Used nmap for port scanning with sudo privileges, detect open ports and find if the target is a server, and what type of server. 
+     In this case, there are multiple ports open on target but one of these ports is running RDP on default port 3389/tcp.   
+	   Sudo nmap -sV [target ip]
+
+     - Detected port 3389/tcp running RDP
+
+2. **Exploitation:**  
+   - Discovered that RDP protocol runs on port 3389/tcp
+   - Attempted to RDP the target using xfreerdp
+   - Access target to discovered is a Windows server
+   - Access flag as it is in the target's desktop 
+
+3. **Privilege Escalation:**  
+   - No priviledge escalation was needed for this lab as RDP is misconfigured on this machine 
+   - No admin account or password was required to login. RDP is currently open on this machine, therefore access is granted by using xfreerdp tool.
+
+4. ## What I Learned
+   - RDP runs on port 3389/TCP and 3389/UDP
+   - RDP could be misconfigured and access can be granted with no permission needed, or credentials
+   - xfreerdp is a tool that helps access Remote Desktop Protocol on other machines.  
+
+## Challenges & Solutions
+- **Challenge:** Initially ran nmap for port scanning, then discovered multiple open ports, for this lab 3389/TCP RDP.
+
+- **Solution:** Using the xfreerdp I was able to RDP into the target's machine and retrieved the flag. 
+
+## References
+- [HTB Legal Rules]( https://resources.hackthebox.com/hubfs/Legal/AUP.pdf )
+- SMB client https://en.wikipedia.org/wiki/Server_Message_Block
+*No spoilers—just my process and key takeaways.*
