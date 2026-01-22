@@ -32,12 +32,14 @@
 4. ## What I Learned
    - RDP runs on port 3389/TCP and 3389/UDP
    - RDP could be misconfigured and access can be granted with no permission needed, or credentials
-   - xfreerdp is a tool that helps access Remote Desktop Protocol on other machines.  
+   - xfreerdp is a tool that helps access Remote Desktop Protocol on other machines
+   - There are multiple programs that can run RDP, such as, Telnet (unsecure), SSH, even Teamviewer and Zendesk, also Microsoft Remote Desktop connection runs
+	 Natively in Windows machine
 
 ## Challenges & Solutions
-- **Challenge:** Initially ran nmap for port scanning, then discovered multiple open ports, for this lab 3389/TCP RDP.
+- **Challenge:** Initially ran nmap for port scanning, then discovered multiple open ports, for this lab 3389/TCP RDP
 
-- **Solution:** Using the xfreerdp I was able to RDP into the target's machine and retrieved the flag. 
+- **Solution:** Using the xfreerdp I was able to RDP into the target's machine and retrieved the flag
 
 ## References
 - [HTB Legal Rules]( https://resources.hackthebox.com/hubfs/Legal/AUP.pdf )
