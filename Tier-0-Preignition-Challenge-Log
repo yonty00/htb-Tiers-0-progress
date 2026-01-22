@@ -1,0 +1,50 @@
+#Preignition
+*Date Completed: 2025-09-05*
+
+## Overview
+- **Category:** Parrot Linux, Golang, Gobuster, Wordlists, Enumeration, Exploitation & Flag
+- **Tier:** 0
+
+## Tools Used
+- Ping IP
+- Nmap (sudo privilege) w/ flag -sV = Service/Version
+- Golang / Gobuster
+- Wordlists
+
+## What I Did / Approach
+1. **Enumeration:**  
+   - Ping Target's IP to detect connection to target
+   - Used nmap for port scanning with sudo privileges and detect open ports. 
+     In this case, the target is running a HTTP service on port 80/tcp
+   - Install Golang and Gobuster
+
+2. **Exploitation:**  
+   - Use web browser (Firefox) to inspect the website and analyze
+   - Website is running nginx
+   - Run Gobuster with proper flags and specific wordlists to discover any hidden web directories
+     Flags such as "dir" to specify tool, -w specifies the wordlists, and -u for Target's IP address
+   - Access hidden php directory and using default login to enter
+   - Retain flag/hash
+
+3. **Privilege Escalation:**  
+   - Priviledge escalation (sudo) was needed to install golang and gobuster
+   - Download Seclist from github repository to use as a wordlist 
+   - Default credentials were needed to access the hidden php web directory
+
+4. ## What I Learned
+   - Websites have hidden directories 
+   - Gobuster can help find those hidden directories to exploit 
+   - Previous Wordpress has many vulnerabilities
+   - Understanding the importance of web security, such as, changing default credentials, and the differences between HTTP & HTTPS
+
+## Challenges & Solutions
+- **Challenge:** Initially ran nmap for port scanning, then discovered HTTP open port
+
+- **Solution:** Using gobuster and wordlist I was able to discover the hidden php directory and exploit it 
+
+## References
+- [HTB Legal Rules]( https://resources.hackthebox.com/hubfs/Legal/AUP.pdf )
+- Gobuster https://en.wikipedia.org/wiki/Gobuster
+- Golang https://en.wikipedia.org/wiki/Go_(programming_language)
+- Wordpress https://en.wikipedia.org/wiki/WordPress
+*No spoilers—just my process and key takeaways.*
