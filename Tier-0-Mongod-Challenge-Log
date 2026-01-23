@@ -1,0 +1,46 @@
+#Mongod
+*Date Completed: 2025-10-02*
+
+## Overview
+- **Category:** Parrot Linux, Mongosh, Mongodb, Enumeration, Exploitation & Flag
+- **Tier:** 0
+
+## Tools Used
+- Ping IP
+- Nmap (sudo privilege) w/ switch -sV , --min-rate= , -p-
+- Mongosh (Mongodb)
+
+## What I Did / Approach
+1. **Enumeration:**  
+   - Ping Target's IP to detect connection to target
+   - Used nmap for port scanning with sudo privileges, also switches such as, -sV, --min-rate=1000 and -p- 
+     to detect open ports, service version, set minimum number of packets send and scan all TCP ports 
+   - Two open ports, SSH and Mongodb on target machine 
+   - Install Mongosh
+
+2. **Exploitation:**  
+   - Installed Mongosh to exploit Mongodb service
+   - Run Mongosh command to connect to target machine
+   - No privilege escalation needed for this Mongodb server as it did not requested credentials
+   - Go through the dbs available, enumerate most important dbs and use the "<show collection;" command to find more details
+   - Capture the flag inside of one of the collecitons (<db.flag.find()) 
+
+3. **Privilege Escalation:**  
+   - Priviledge escalation (sudo) was needed to install mongosh
+
+4. ## What I Learned
+   - Mongodb is a type of NoSQL database
+   - Mongodb does not use tables or rows like other dbs, MongoDB uses collections and documents. The documents are what contain the key-values 
+     which are the basic unit in a MongoDB databse 
+   - Understanding the importance Mongodb and security, as databse contain a lot of important information
+   - MongoDB uses different commands in order to explore the database, such as, ">use nameofcollection;" ">show collections;" , ">show dbs;"  , and ">db.nameofdocument.find();"
+
+## Challenges & Solutions
+- **Challenge:** Initially ran nmap for port scanning, discovered Mongodb service, connect to Mongodb to enumerate
+
+- **Solution:** Explore the Mongodb, check collections and obtain the flag/hash
+
+## References
+- [HTB Legal Rules]( https://resources.hackthebox.com/hubfs/Legal/AUP.pdf )
+- Mongodb https://en.wikipedia.org/wiki/MongoDB
+*No spoilers—just my process and key takeaways.*
